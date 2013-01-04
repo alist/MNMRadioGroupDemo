@@ -35,13 +35,9 @@
  * Deallocates the memory occupied by the receiver.
  */
 - (void)dealloc {
-    [text_ release];
     text_ = nil;
     
-    [value_ release];
     value_ = nil;
-    
-    [super dealloc];
 }
 
 #pragma mark -
@@ -54,7 +50,7 @@
     
     if (self = [super init]) {
         
-        value_ = [value retain];
+        value_ = value;
         
         text_ = [text copy];
     }

@@ -65,10 +65,10 @@
      */
     NSInteger selectedIndex_;
     
-    /**
-     * Delegate
-     */
-    id<MNMRadioGroupDelegate> delegate_;
+//    /**
+//     * Delegate
+//     */
+//    id<MNMRadioGroupDelegate> delegate_;
 }
 
 /**
@@ -79,7 +79,7 @@
 /**
  * Provides readwrite access to the delegate_
  */
-@property(nonatomic, readwrite, assign) id<MNMRadioGroupDelegate> delegate;
+@property(nonatomic, weak) id<MNMRadioGroupDelegate> delegate;
 
 /**
  * Initializes and returns a newly allocated view object with the specified frame rectangle.

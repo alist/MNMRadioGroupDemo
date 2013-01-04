@@ -83,7 +83,7 @@
 @implementation MNMRadioGroup
 
 @synthesize selectedIndex = selectedIndex_;
-@synthesize delegate = delegate_;
+@synthesize delegate ;
 
 #pragma mark -
 #pragma mark Static methods
@@ -95,7 +95,7 @@
     
     width = width - (LEFT_MARGIN * 2) - APPROX_SIZE_OF_RADIO_IMAGE - 10.0f; // This value is the gap between left edge of button and the image plus image and right edge of text
     
-    CGSize size = [value sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:CGSizeMake(width, 999.0f) lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size = [value sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:CGSizeMake(width, 999.0f) lineBreakMode:NSLineBreakByWordWrapping];
     
     CGFloat result = (size.height < BUTTON_HEIGHT ? BUTTON_HEIGHT : size.height + 6.0f);
     
@@ -127,13 +127,10 @@
  * Deallocates the memory occupied by the receiver.
  */
 - (void)dealloc {
-    [buttons_ release];
     buttons_ = nil;
     
-    [values_ release];
     values_ = nil;
     
-    [super dealloc];
 }
 
 #pragma mark -
@@ -186,7 +183,7 @@
         
         button.frame = CGRectMake(LEFT_MARGIN, y, radioWidth, height);
         button.titleLabel.numberOfLines = 0;
-        button.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
+        button.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         button.titleLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
         
         [button setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateNormal];
@@ -224,7 +221,7 @@
         
         button.selected = YES;
         
-        [delegate_ MNMRadioGroupValueSelected:[values_ objectAtIndex:index]];
+        [self.delegate MNMRadioGroupValueSelected:[values_ objectAtIndex:index]];
     }    
 }
 
