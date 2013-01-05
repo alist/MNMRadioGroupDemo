@@ -71,6 +71,9 @@
 //    id<MNMRadioGroupDelegate> delegate_;
 }
 
+@property (nonatomic,strong) UIFont * textFont;
+@property (nonatomic,strong) UIColor * textColor;
+
 /**
  * Provides readwrite access to the selectedIndex_
  */
@@ -90,6 +93,14 @@
  * @return An initialized view object or nil if the object couldn't be created.
  */
 - (id)initWithFrame:(CGRect)frame andValues:(NSArray *)values;
+
+
+/**
+Now with font and color.
+
+*/
+- (id)initWithFrame:(CGRect)frame textColor:(UIColor*)color textFont:(UIFont*)font andValues:(NSArray *)values;
+
 
 /**
  * Returns the final height of this component depending on the given array values 

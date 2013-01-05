@@ -85,6 +85,8 @@
 @synthesize selectedIndex = selectedIndex_;
 @synthesize delegate ;
 
+@synthesize textColor, textFont;
+
 #pragma mark -
 #pragma mark Static methods
 
@@ -139,15 +141,18 @@
 /*
  * Initializes and returns a newly allocated view object with the specified width and values
  */
-- (id)initWithFrame:(CGRect)frame andValues:(NSArray *)values {
-    
-    if (self = [super initWithFrame:frame]) {
+
+- (id)initWithFrame:(CGRect)frame textColor:(UIColor*)color textFont:(UIFont*)font andValues:(NSArray *)values{
+	if (self = [super initWithFrame:frame]) {
         
         self.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
         self.layer.cornerRadius = 10;
         self.layer.borderWidth = 1.0f;
         self.layer.borderColor = [UIColor colorWithWhite:0.9f alpha:1.0f].CGColor;
         
+		self.textFont = font;
+		self.textColor = color;
+		
 		if (ArrayHasItems(values)){
 			if ([[values objectAtIndex:0] isKindOfClass:[MNMRadioGroupValue class]]){
 				values_ = [[NSArray alloc] initWithArray:values];
@@ -156,19 +161,27 @@
 				for (NSString * str in values){
 					[valArray addObject:[[MNMRadioGroupValue alloc] initWithValue:[NSNumber numberWithInt:[values indexOfObject:str]] andText:str]];
 				}
+				values_ = valArray;
 				
 			}
-
+			
 		}
-		        
+		
         buttons_ = [[NSMutableArray alloc] initWithCapacity:values_.count];
         
         selectedIndex_ = RADIO_GROUP_NO_SELECTED_OPTION;
-        
-        [self createButtons];
-    }
+		
+		[self createButtons];
+	}
     
     return self;
+}
+
+- (id)initWithFrame:(CGRect)frame andValues:(NSArray *)values {
+	if (self = [self initWithFrame:frame textColor:[UIColor lightGrayColor] textFont:[UIFont systemFontOfSize:FONT_SIZE] andValues:values]) {
+		
+	}
+	return self;
 }
 
 #pragma mark -
@@ -195,7 +208,8 @@
         button.frame = CGRectMake(LEFT_MARGIN, y, radioWidth, height);
         button.titleLabel.numberOfLines = 0;
         button.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        button.titleLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
+        button.titleLabel.font		=  self.textFont;
+		button.titleLabel.textColor	= self.textColor;
         
         [button setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:SELECTED_IMAGE] forState:UIControlStateSelected];
