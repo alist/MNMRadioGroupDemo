@@ -86,7 +86,7 @@
  * It receives an array of MNMRadioGroupValue to conform the group
  *
  * @param aRect: The frame rectangle for the view, measured in points.
- * @param values An array of MNMRadioGroupValue objects
+ * @param values An array of MNMRadioGroupValue objects, or NSStrings that will be associated with their index-order value when instantiated into MNMRadioGroupValue(s). THEY MUST ALL BE OF THE SAME CLASS.
  * @return An initialized view object or nil if the object couldn't be created.
  */
 - (id)initWithFrame:(CGRect)frame andValues:(NSArray *)values;

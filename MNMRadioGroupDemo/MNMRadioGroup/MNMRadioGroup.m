@@ -147,9 +147,20 @@
         self.layer.cornerRadius = 10;
         self.layer.borderWidth = 1.0f;
         self.layer.borderColor = [UIColor colorWithWhite:0.9f alpha:1.0f].CGColor;
-                
-        values_ = [[NSArray alloc] initWithArray:values];
         
+		if (ArrayHasItems(values)){
+			if ([[values objectAtIndex:0] isKindOfClass:[MNMRadioGroupValue class]]){
+				values_ = [[NSArray alloc] initWithArray:values];
+			}else if ([[values objectAtIndex:0] isKindOfClass:[NSString class]]){
+				NSMutableArray * valArray = [NSMutableArray array];
+				for (NSString * str in values){
+					[valArray addObject:[[MNMRadioGroupValue alloc] initWithValue:[NSNumber numberWithInt:[values indexOfObject:str]] andText:str]];
+				}
+				
+			}
+
+		}
+		        
         buttons_ = [[NSMutableArray alloc] initWithCapacity:values_.count];
         
         selectedIndex_ = RADIO_GROUP_NO_SELECTED_OPTION;
