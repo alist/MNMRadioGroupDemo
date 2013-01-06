@@ -28,16 +28,16 @@
  */
 #define RADIO_GROUP_NO_SELECTED_OPTION              -1
 
-@class MNMRadioGroupValue;
+@class MNMRadioGroupValue, MNMRadioGroup;
 
-@protocol MNMRadioGroupDelegate
+@protocol MNMRadioGroupDelegate<NSObject>
 
 /**
  * Tells delegate that a value has been selected
  *
  * @param value The MNMRadioGroupValue object selected
  */
-- (void)MNMRadioGroupValueSelected:(MNMRadioGroupValue *)value;
+- (void)MNMRadioGroupValueSelected:(MNMRadioGroupValue *)value fromRadioGroup:(MNMRadioGroup*)group;
 
 @end
 
@@ -71,8 +71,8 @@
 //    id<MNMRadioGroupDelegate> delegate_;
 }
 
-@property (nonatomic,strong) UIFont * textFont;
-@property (nonatomic,strong) UIColor * textColor;
+//optional property to help identify this radio group
+@property (nonatomic, strong) NSObject * identifier;
 
 /**
  * Provides readwrite access to the selectedIndex_

@@ -64,6 +64,9 @@
 
 @interface MNMRadioGroup()
 
+@property (nonatomic,strong) UIFont * textFont;
+@property (nonatomic,strong) UIColor * textColor;
+
 /**
  * A value has been pressed
  *
@@ -80,12 +83,15 @@
 
 @end
 
+
 @implementation MNMRadioGroup
+
 
 @synthesize selectedIndex = selectedIndex_;
 @synthesize delegate ;
 
 @synthesize textColor, textFont;
+@synthesize identifier;
 
 #pragma mark -
 #pragma mark Static methods
@@ -246,7 +252,8 @@
         
         button.selected = YES;
         
-        [self.delegate MNMRadioGroupValueSelected:[values_ objectAtIndex:index]];
+		if ([self.delegate respondsToSelector:@selector(MNMRadioGroupValueSelected:fromRadioGroup:)])
+			[self.delegate MNMRadioGroupValueSelected:[values_ objectAtIndex:index] fromRadioGroup:self];
     }    
 }
 
