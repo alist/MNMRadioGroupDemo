@@ -30,7 +30,7 @@
     /**
      * Value
      */
-    NSObject *value_;
+    NSObject *__unsafe_unretained value_;
     
     /**
      * Text
@@ -41,7 +41,7 @@
 /**
  * Provides readonly access to the value
  */
-@property (nonatomic, readonly) NSObject *value;
+@property (unsafe_unretained, nonatomic, readonly) NSObject *value;
 
 /**
  * Provides readonly access to the text

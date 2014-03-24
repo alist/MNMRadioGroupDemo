@@ -33,10 +33,8 @@
  * Deallocates the memory occupied by the receiver.
  */
 - (void)dealloc {    
-    [radioGroup_ release];
     radioGroup_ = nil;
     
-    [super dealloc];
 }
 
 #pragma mark -
@@ -48,12 +46,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSMutableArray *valuesArray = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *valuesArray = [[NSMutableArray alloc] init];
     
-    [valuesArray addObject:[[[MNMRadioGroupValue alloc] initWithValue:[UIColor redColor] andText:@"The color of fire and blood"] autorelease]];
-    [valuesArray addObject:[[[MNMRadioGroupValue alloc] initWithValue:[UIColor greenColor] andText:@"Grass, the trees... nature"] autorelease]];
-    [valuesArray addObject:[[[MNMRadioGroupValue alloc] initWithValue:[UIColor blueColor] andText:@"If you're sad you are probably thinking on this color. But, it's also the color of the sky"] autorelease]];
-    [valuesArray addObject:[[[MNMRadioGroupValue alloc] initWithValue:[UIColor yellowColor] andText:@"The color of the sun, bright and cheerful"] autorelease]];
+    [valuesArray addObject:[[MNMRadioGroupValue alloc] initWithValue:[UIColor redColor] andText:@"The color of fire and blood"]];
+    [valuesArray addObject:[[MNMRadioGroupValue alloc] initWithValue:[UIColor greenColor] andText:@"Grass, the trees... nature"]];
+    [valuesArray addObject:[[MNMRadioGroupValue alloc] initWithValue:[UIColor blueColor] andText:@"If you're sad you are probably thinking on this color. But, it's also the color of the sky"]];
+    [valuesArray addObject:[[MNMRadioGroupValue alloc] initWithValue:[UIColor yellowColor] andText:@"The color of the sun, bright and cheerful"]];
     
     CGFloat margin = 20.0f;
     CGFloat width = CGRectGetWidth(self.view.frame) - margin * 2.0f;
@@ -71,7 +69,6 @@
 - (void)viewDidUnload {
     [super viewDidUnload];
     
-    [radioGroup_ release];
     radioGroup_ = nil;
 }
 
@@ -83,8 +80,9 @@
  *
  * @param value The MNMRadioGroupValue object selected
  */
-- (void)MNMRadioGroupValueSelected:(MNMRadioGroupValue *)value {
 
+- (void)MNMRadioGroupValueSelected:(MNMRadioGroupValue *)value fromRadioGroup:(MNMRadioGroup*)group
+{
     if ([value.value isKindOfClass:[UIColor class]]) {
         
         UIColor *color = [(UIColor *)value.value colorWithAlphaComponent:0.5f];

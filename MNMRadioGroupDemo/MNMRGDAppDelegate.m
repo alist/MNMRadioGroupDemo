@@ -35,15 +35,6 @@
 /**
  * Deallocates memory
  */
-- (void)dealloc {
-    [_window release];
-    _window = nil;
-    
-    [_viewController release];
-    _viewController = nil;
-    
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark UIApplicationDelegate
@@ -57,8 +48,8 @@
  */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.viewController = [[[MNMRGDViewController alloc] initWithNibName:@"MNMRGDViewController" bundle:nil] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.viewController = [[MNMRGDViewController alloc] initWithNibName:@"MNMRGDViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     
     [self.window makeKeyAndVisible];

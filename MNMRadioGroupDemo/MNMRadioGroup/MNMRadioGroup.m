@@ -159,13 +159,13 @@
 		self.textFont = font;
 		self.textColor = color;
 		
-		if (ArrayHasItems(values)){
-			if ([[values objectAtIndex:0] isKindOfClass:[MNMRadioGroupValue class]]){
+		if (values.count){
+			if ([values[0] isKindOfClass:[MNMRadioGroupValue class]]){
 				values_ = [[NSArray alloc] initWithArray:values];
-			}else if ([[values objectAtIndex:0] isKindOfClass:[NSString class]]){
+			}else if ([values[0] isKindOfClass:[NSString class]]){
 				NSMutableArray * valArray = [NSMutableArray array];
 				for (NSString * str in values){
-					[valArray addObject:[[MNMRadioGroupValue alloc] initWithValue:[NSNumber numberWithInt:[values indexOfObject:str]] andText:str]];
+					[valArray addObject:[[MNMRadioGroupValue alloc] initWithValue:@([values indexOfObject:str]) andText:str]];
 				}
 				values_ = valArray;
 				
@@ -203,7 +203,7 @@
     
     for (int i = 0; i < values_.count; i++) {
         
-        MNMRadioGroupValue *value = [values_ objectAtIndex:i];
+        MNMRadioGroupValue *value = values_[i];
         
         NSString *string = value.text;
         
@@ -244,7 +244,7 @@
         
         if (selectedIndex_ != RADIO_GROUP_NO_SELECTED_OPTION) {
             
-            UIButton *previousButton = [buttons_ objectAtIndex:selectedIndex_];
+            UIButton *previousButton = buttons_[selectedIndex_];
             previousButton.selected = NO;
         }
         
@@ -253,7 +253,7 @@
         button.selected = YES;
         
 		if ([self.delegate respondsToSelector:@selector(MNMRadioGroupValueSelected:fromRadioGroup:)])
-			[self.delegate MNMRadioGroupValueSelected:[values_ objectAtIndex:index] fromRadioGroup:self];
+			[self.delegate MNMRadioGroupValueSelected:values_[index] fromRadioGroup:self];
     }    
 }
 
