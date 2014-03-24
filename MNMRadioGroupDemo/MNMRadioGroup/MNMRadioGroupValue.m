@@ -34,11 +34,6 @@
 /**
  * Deallocates the memory occupied by the receiver.
  */
-- (void)dealloc {
-    text_ = nil;
-    
-    value_ = nil;
-}
 
 #pragma mark -
 #pragma mark Initializtion

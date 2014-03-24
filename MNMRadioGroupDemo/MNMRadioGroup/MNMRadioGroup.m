@@ -65,7 +65,6 @@
 @interface MNMRadioGroup()
 
 @property (nonatomic,strong) UIFont * textFont;
-@property (nonatomic,strong) UIColor * textColor;
 
 /**
  * A value has been pressed
@@ -86,12 +85,73 @@
 
 @implementation MNMRadioGroup
 
-
 @synthesize selectedIndex = selectedIndex_;
-@synthesize delegate ;
+@synthesize textColor = _textColor;
+@synthesize selectedImage = _selectedImage;
+@synthesize unSelectedImage = _unSelectedImage;
 
-@synthesize textColor, textFont;
-@synthesize identifier;
+#pragma mark -
+#pragma cutom getters
+
+- (UIColor *) textColor
+{
+    if (!_textColor)
+    {
+        _textColor = [UIColor lightGrayColor];
+    }
+    return _textColor;
+}
+
+- (UIImage *) selectedImage
+{
+    if (!_selectedImage)
+    {
+        _selectedImage = [UIImage imageNamed:SELECTED_IMAGE];
+    }
+    return _selectedImage;
+}
+
+- (UIImage *) unSelectedImage
+{
+    if (!_unSelectedImage)
+    {
+        _unSelectedImage = [UIImage imageNamed:UNSELECTED_IMAGE];
+    }
+    return _unSelectedImage;
+}
+
+#pragma mark -
+#pragma cutom setters
+
+- (void) setTextColor:(UIColor *)textColor;
+{
+    _textColor = textColor;
+    
+    for (UIButton * button in buttons_)
+    {
+        [button setTitleColor:self.textColor forState:UIControlStateNormal];
+    }
+}
+
+- (void) setUnSelectedImage:(UIImage *)unSelectedImage
+{
+    _unSelectedImage = unSelectedImage;
+    
+    for (UIButton * button in buttons_)
+    {
+        [button setImage:unSelectedImage forState:UIControlStateNormal];
+    }
+}
+
+- (void) setSelectedImage:(UIImage *)selectedImage
+{
+    _selectedImage = selectedImage;
+    
+    for (UIButton * button in buttons_)
+    {
+        [button setImage:selectedImage forState:UIControlStateSelected];
+    }
+}
 
 #pragma mark -
 #pragma mark Static methods
@@ -149,28 +209,25 @@
  */
 
 - (id)initWithFrame:(CGRect)frame textColor:(UIColor*)color textFont:(UIFont*)font andValues:(NSArray *)values{
-	if (self = [super initWithFrame:frame]) {
-        
-        self.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
-        self.layer.cornerRadius = 10;
-        self.layer.borderWidth = 1.0f;
-        self.layer.borderColor = [UIColor colorWithWhite:0.9f alpha:1.0f].CGColor;
-        
+	if (self = [super initWithFrame:frame])
+    {
 		self.textFont = font;
 		self.textColor = color;
 		
-		if (ArrayHasItems(values)){
-			if ([[values objectAtIndex:0] isKindOfClass:[MNMRadioGroupValue class]]){
+		if (values.count)
+        {
+			if ([values[0] isKindOfClass:[MNMRadioGroupValue class]])
+            {
 				values_ = [[NSArray alloc] initWithArray:values];
-			}else if ([[values objectAtIndex:0] isKindOfClass:[NSString class]]){
+			}
+            else if ([values[0] isKindOfClass:[NSString class]])
+            {
 				NSMutableArray * valArray = [NSMutableArray array];
 				for (NSString * str in values){
-					[valArray addObject:[[MNMRadioGroupValue alloc] initWithValue:[NSNumber numberWithInt:[values indexOfObject:str]] andText:str]];
+					[valArray addObject:[[MNMRadioGroupValue alloc] initWithValue:@([values indexOfObject:str]) andText:str]];
 				}
 				values_ = valArray;
-				
 			}
-			
 		}
 		
         buttons_ = [[NSMutableArray alloc] initWithCapacity:values_.count];
@@ -203,7 +260,7 @@
     
     for (int i = 0; i < values_.count; i++) {
         
-        MNMRadioGroupValue *value = [values_ objectAtIndex:i];
+        MNMRadioGroupValue *value = values_[i];
         
         NSString *string = value.text;
         
@@ -217,8 +274,8 @@
         button.titleLabel.font		=  self.textFont;
 		button.titleLabel.textColor	= self.textColor;
         
-        [button setImage:[UIImage imageNamed:UNSELECTED_IMAGE] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:SELECTED_IMAGE] forState:UIControlStateSelected];
+        [button setImage:self.unSelectedImage forState:UIControlStateNormal];
+        [button setImage:self.selectedImage forState:UIControlStateSelected];
         [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
         [button setTitle:string forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -244,7 +301,7 @@
         
         if (selectedIndex_ != RADIO_GROUP_NO_SELECTED_OPTION) {
             
-            UIButton *previousButton = [buttons_ objectAtIndex:selectedIndex_];
+            UIButton *previousButton = buttons_[selectedIndex_];
             previousButton.selected = NO;
         }
         
@@ -253,7 +310,7 @@
         button.selected = YES;
         
 		if ([self.delegate respondsToSelector:@selector(MNMRadioGroupValueSelected:fromRadioGroup:)])
-			[self.delegate MNMRadioGroupValueSelected:[values_ objectAtIndex:index] fromRadioGroup:self];
+			[self.delegate MNMRadioGroupValueSelected:values_[index] fromRadioGroup:self];
     }    
 }
 

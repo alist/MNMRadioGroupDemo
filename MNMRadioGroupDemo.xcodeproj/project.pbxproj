@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46A3388818E00D4F002DF953 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A3388718E00D4F002DF953 /* Default-568h@2x.png */; };
+		46A3388A18E0136F002DF953 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A3388918E0136F002DF953 /* Images.xcassets */; };
 		5795BCBF14D03C2600CF9F70 /* MNMRadioGroupSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5795BCBB14D03C2500CF9F70 /* MNMRadioGroupSelected.png */; };
 		5795BCC014D03C2600CF9F70 /* MNMRadioGroupSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5795BCBC14D03C2500CF9F70 /* MNMRadioGroupSelected@2x.png */; };
 		5795BCC114D03C2600CF9F70 /* MNMRadioGroupUnselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5795BCBD14D03C2500CF9F70 /* MNMRadioGroupUnselected.png */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46A3388718E00D4F002DF953 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		46A3388918E0136F002DF953 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5795BCBB14D03C2500CF9F70 /* MNMRadioGroupSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MNMRadioGroupSelected.png; sourceTree = "<group>"; };
 		5795BCBC14D03C2500CF9F70 /* MNMRadioGroupSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MNMRadioGroupSelected@2x.png"; sourceTree = "<group>"; };
 		5795BCBD14D03C2500CF9F70 /* MNMRadioGroupUnselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MNMRadioGroupUnselected.png; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 		5799A02A14CEE88400093D25 = {
 			isa = PBXGroup;
 			children = (
+				46A3388718E00D4F002DF953 /* Default-568h@2x.png */,
 				5799A03F14CEE88500093D25 /* MNMRadioGroupDemo */,
 				5799A03814CEE88500093D25 /* Frameworks */,
 				5799A03614CEE88500093D25 /* Products */,
@@ -108,6 +113,7 @@
 				5799A04B14CEE88500093D25 /* MNMRGDViewController.h */,
 				5799A04C14CEE88500093D25 /* MNMRGDViewController.m */,
 				5799A04E14CEE88500093D25 /* MNMRGDViewController.xib */,
+				46A3388918E0136F002DF953 /* Images.xcassets */,
 				5799A04014CEE88500093D25 /* Supporting Files */,
 			);
 			path = MNMRadioGroupDemo;
@@ -162,7 +168,7 @@
 		5799A02C14CEE88400093D25 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 5799A02F14CEE88400093D25 /* Build configuration list for PBXProject "MNMRadioGroupDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -187,10 +193,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5799A04414CEE88500093D25 /* InfoPlist.strings in Resources */,
+				46A3388A18E0136F002DF953 /* Images.xcassets in Resources */,
 				5799A05014CEE88500093D25 /* MNMRGDViewController.xib in Resources */,
 				5795BCBF14D03C2600CF9F70 /* MNMRadioGroupSelected.png in Resources */,
 				5795BCC014D03C2600CF9F70 /* MNMRadioGroupSelected@2x.png in Resources */,
 				5795BCC114D03C2600CF9F70 /* MNMRadioGroupUnselected.png in Resources */,
+				46A3388818E00D4F002DF953 /* Default-568h@2x.png in Resources */,
 				5795BCC214D03C2600CF9F70 /* MNMRadioGroupUnselected@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,7 +244,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -248,10 +261,15 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -260,15 +278,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -278,10 +305,13 @@
 		5799A05414CEE88500093D25 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MNMRadioGroupDemo/MNMRadioGroupDemo-Prefix.pch";
 				INFOPLIST_FILE = "MNMRadioGroupDemo/MNMRadioGroupDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -290,10 +320,13 @@
 		5799A05514CEE88500093D25 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MNMRadioGroupDemo/MNMRadioGroupDemo-Prefix.pch";
 				INFOPLIST_FILE = "MNMRadioGroupDemo/MNMRadioGroupDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

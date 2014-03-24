@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F6BB9FC4-0319-4862-9E3A-983289F2109B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MNMRadioGroupDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>62EA3EAE-53E9-400C-9F50-5C5FC75AAA72</key>
+		<string>https://github.com/Vidhyadharan24/MNMRadioGroupDemo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MNMRadioGroupDemo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>62EA3EAE-53E9-400C-9F50-5C5FC75AAA72</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Vidhyadharan24/MNMRadioGroupDemo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>62EA3EAE-53E9-400C-9F50-5C5FC75AAA72</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>62EA3EAE-53E9-400C-9F50-5C5FC75AAA72</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MNMRadioGroupDemo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

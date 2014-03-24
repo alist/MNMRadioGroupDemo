@@ -74,15 +74,24 @@
 //optional property to help identify this radio group
 @property (nonatomic, strong) NSObject * identifier;
 
+//optional property to set selected checkmark image
+@property (nonatomic, strong) UIImage * selectedImage;
+
+//optional property to set unselected checkmark image
+@property (nonatomic, strong) UIImage * unSelectedImage;
+
+//optional property to set custom text color
+@property (nonatomic, strong) UIColor * textColor;
+
 /**
  * Provides readwrite access to the selectedIndex_
  */
-@property(nonatomic, readwrite, assign) NSInteger selectedIndex;
+@property (nonatomic, readwrite, assign) NSInteger selectedIndex;
 
 /**
  * Provides readwrite access to the delegate_
  */
-@property(nonatomic, weak) id<MNMRadioGroupDelegate> delegate;
+@property (nonatomic, weak) id<MNMRadioGroupDelegate> delegate;
 
 /**
  * Initializes and returns a newly allocated view object with the specified frame rectangle.
