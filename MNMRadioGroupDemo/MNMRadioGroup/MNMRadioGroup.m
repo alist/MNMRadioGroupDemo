@@ -86,11 +86,21 @@
 @implementation MNMRadioGroup
 
 @synthesize selectedIndex = selectedIndex_;
+@synthesize textColor = _textColor;
 @synthesize selectedImage = _selectedImage;
 @synthesize unSelectedImage = _unSelectedImage;
 
 #pragma mark -
 #pragma cutom getters
+
+- (UIColor *) textColor
+{
+    if (!_textColor)
+    {
+        _textColor = [UIColor lightGrayColor];
+    }
+    return _textColor;
+}
 
 - (UIImage *) selectedImage
 {
@@ -199,13 +209,8 @@
  */
 
 - (id)initWithFrame:(CGRect)frame textColor:(UIColor*)color textFont:(UIFont*)font andValues:(NSArray *)values{
-	if (self = [super initWithFrame:frame]) {
-        
-        self.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
-        self.layer.cornerRadius = 10;
-        self.layer.borderWidth = 1.0f;
-        self.layer.borderColor = [UIColor colorWithWhite:0.9f alpha:1.0f].CGColor;
-        
+	if (self = [super initWithFrame:frame])
+    {
 		self.textFont = font;
 		self.textColor = color;
 		
